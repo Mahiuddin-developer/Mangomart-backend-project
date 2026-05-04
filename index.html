@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>MangoMart | Fresh Premium Mangoes from Rajshahi</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5fff6;
+      color: #1b2a18;
+      scroll-behavior: smooth;
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 1px solid #FFE0B5;
+      background-color: #FFFBF5;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #E67E22, #C0392B);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #5C3D2E;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #E67E22;
+    }
+
+    .btn-login {
+      background: transparent;
+      border: 2px solid #E67E22;
+      padding: 6px 20px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: #E67E22;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-login:hover {
+      background: #E67E22;
+      color: white;
+    }
+
+    .btn-order-nav {
+      background: #E67E22;
+      border: none;
+      padding: 8px 26px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 4px 10px rgba(230,126,34,0.3);
+      position: relative;
+    }
+
+    .btn-order-nav:hover {
+      background: #C0392B;
+      transform: scale(1.02);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #C0392B;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      margin: 50px 0 60px;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #FEE8D6;
+      color: #C0392B;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+    }
+
+    .hero-content h2 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero-content .highlight {
+      color: #E67E22;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: #6B4E3A;
+      margin: 20px 0;
+      max-width: 500px;
+      line-height: 1.5;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2A2418;
+      margin: 20px 0;
+    }
+
+    .price span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #9B7B5C;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 20px 0 30px;
+    }
+
+    .btn-primary {
+      background: #E67E22;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #C0392B;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #E67E22;
+      padding: 10px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      color: #E67E22;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: #E67E22;
+      color: white;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 35px;
+      margin-top: 25px;
+    }
+
+    .hero-stats div p {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: #C0392B;
+    }
+
+    .hero-image {
+      flex: 1;
+      background: linear-gradient(145deg, #FFF0E0, #FFE2C6);
+      border-radius: 60px;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 50px;
+      width: 280px;
+      height: auto;
+    }
+
+    /* Trust Row */
+    .trust-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFF2E5;
+      padding: 24px 32px;
+      border-radius: 60px;
+      margin: 30px 0 50px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* Why Choose Us */
+    .why-choose {
+      margin: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 48px;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #E67E22;
+      margin: 14px auto 0;
+      border-radius: 4px;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 32px 24px;
+      border-radius: 32px;
+      text-align: center;
+      flex: 1;
+      min-width: 220px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+      border: 1px solid #FFE0C4;
+    }
+
+    .feature-card i {
+      font-size: 2.5rem;
+      color: #E67E22;
+      margin-bottom: 18px;
+    }
+
+    /* Best Selling Mango Varieties with REAL images */
+    .best-selling {
+      margin: 70px 0;
+    }
+
+    .variety-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .variety-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      width: 280px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .variety-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+    }
+
+    .variety-img {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .variety-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .variety-card:hover .variety-img img {
+      transform: scale(1.05);
+    }
+
+    .variety-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .variety-info h3 {
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .variety-info strong {
+      display: block;
+      margin: 10px 0;
+      font-size: 1.2rem;
+      color: #E67E22;
+    }
+
+    .variety-info button {
+      margin-top: 12px;
+      background: transparent;
+      border: 1.5px solid #E67E22;
+      padding: 8px 20px;
+      border-radius: 30px;
+      color: #E67E22;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .variety-info button:hover {
+      background: #E67E22;
+      color: white;
+    }
+
+    /* Statistics Counter */
+    .stats-counter {
+      background: linear-gradient(105deg, #2C241A 0%, #4A3727 100%);
+      border-radius: 60px;
+      padding: 48px 32px;
+      margin: 70px 0;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      text-align: center;
+      gap: 30px;
+    }
+
+    .stats-counter div p {
+      font-size: 2.4rem;
+      font-weight: 800;
+    }
+
+    /* Customer Reviews */
+    .reviews {
+      margin: 70px 0;
+      background: #FFF5EB;
+      padding: 48px 24px;
+      border-radius: 64px;
+    }
+
+    .review-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+
+    .review-card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      max-width: 320px;
+    }
+
+    .stars {
+      color: #FFB81C;
+      margin-bottom: 12px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 32px;
+      padding: 40px;
+      max-width: 450px;
+      width: 90%;
+      position: relative;
+      animation: modalSlide 0.3s ease;
+    }
+
+    @keyframes modalSlide {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #5C3D2E;
+    }
+
+    .modal h2 {
+      margin-bottom: 24px;
+      color: #2A2418;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #5C3D2E;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #FFE0B5;
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .input-group input:focus {
+      border-color: #E67E22;
+    }
+
+    .modal-btn {
+      width: 100%;
+      background: #E67E22;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .modal-footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #8B694C;
+    }
+
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100%;
+      background: white;
+      box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+      z-index: 1001;
+      transition: 0.3s;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-sidebar.open {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #FFE0B5;
+      padding-bottom: 15px;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      margin: 20px 0;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #F0E0D0;
+    }
+
+    .cart-total {
+      border-top: 2px solid #E67E22;
+      padding-top: 15px;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .checkout-btn {
+      background: #E67E22;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 50px;
+      font-weight: 700;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .festival-banner {
+      background: linear-gradient(115deg, #FFF0E0, #FFE2C6);
+      border-radius: 48px;
+      padding: 48px 36px;
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    footer {
+      background: #2C241A;
+      color: #F0E2D4;
+      padding: 48px 0 24px;
+      border-radius: 48px 48px 0 0;
+      margin-top: 60px;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .social i {
+      font-size: 1.6rem;
+      margin-right: 16px;
+      cursor: pointer;
+    }
+
+    .toast-msg {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2C241A;
+      color: #FFE0B5;
+      padding: 12px 28px;
+      border-radius: 50px;
+      z-index: 1002;
+      display: none;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 780px) {
+      .hero-content h2 { font-size: 2.2rem; }
+      .cart-sidebar { width: 100%; right: -100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="toast" class="toast-msg"></div>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <h2><i class="fas fa-user-circle"></i> Login to MangoMart</h2>
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="your@email.com">
+    </div>
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="••••••">
+    </div>
+    <button class="modal-btn" id="doLoginBtn">Login</button>
+    <div class="modal-footer">Demo: any email & password works</div>
+  </div>
+</div>
+
+<!-- Cart Sidebar -->
+<div id="cartSidebar" class="cart-sidebar">
+  <div class="cart-header">
+    <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
+    <span class="close-modal" id="closeCart" style="font-size:28px; cursor:pointer;">&times;</span>
+  </div>
+  <div id="cartItems" class="cart-items">
+    <p style="text-align:center; color:#9B7B5C;">Your cart is empty</p>
+  </div>
+  <div class="cart-total" id="cartTotal">Total: BDT 0</div>
+  <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+</div>
+
+<div class="container">
+  <nav>
+    <div class="logo"><h1>MangoMart</h1></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="btn-login" id="openLoginBtn"><i class="fas fa-user"></i> Login</button></li>
+      <li><button class="btn-order-nav" id="openCartBtn">Order Now <span id="cartCount" class="cart-badge">0</span></button></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="badge">✨ 22Brix • Naturally ripened</div>
+        <h2>Fresh Premium <span class="highlight">Mangoes</span><br>Delivered to Your <span class="highlight">Doorstep</span></h2>
+        <p class="hero-desc">Naturally ripened, handpicked mangoes directly from the orchards of Rajshahi & Chapai Nawabganj — chemical-free, juicy, unforgettable.</p>
+        <div class="price">BDT 180/kg <span>(farmers price)</span></div>
+        <div class="hero-buttons">
+          <button class="btn-primary" id="shopNowScrollBtn">Shop Now</button>
+          <button class="btn-secondary" id="watchFarmBtn">Watch Farm Story</button>
+        </div>
+        <div class="hero-stats">
+          <div><p>10,000+</p><span>Happy customers</span></div>
+          <div><p>24+</p><span>Mango varieties</span></div>
+        </div>
+      </div>
+      
+        <img src="img/mango.jpg.webp" alt="Fresh Premium Mango">
+        <img src="img/mango2.jpg.jpg" alt="Fresh Premium Mango">
+        
+        
+         </div>
+  </section>
+
+  <!-- Trust Row -->
+  <div class="trust-row">
+    <div class="trust-text"><i class="fas fa-star-of-life"></i> Trusted by 10,000+ happy customers</div>
+    <div style="display: flex; gap: 32px;">
+      <div><strong>2,785+</strong><br>Orchards</div>
+      <div><strong>13+</strong><br>Years</div>
+      <div><strong>8,356+</strong><br>5⭐ reviews</div>
+      <div><strong>27%</strong><br>Sweeter this year</div>
+    </div>
+  </div>
+
+  <!-- Why Choose Us -->
+  <div class="why-choose" id="about">
+    <div class="section-title">Why Choose Us</div>
+    <div class="features-grid">
+      <div class="feature-card"><i class="fas fa-leaf"></i><h3>Chemical-Free</h3><p>No artificial ripening</p></div>
+      <div class="feature-card"><i class="fas fa-truck-fast"></i><h3>2-Day Delivery</h3><p>Freshness guaranteed</p></div>
+      <div class="feature-card"><i class="fas fa-hand-holding-heart"></i><h3>Farmer First</h3><p>Direct from Rajshahi</p></div>
+      <div class="feature-card"><i class="fas fa-trophy"></i><h3>22Brix+</h3><p>Superior sweetness</p></div>
+    </div>
+  </div>
+
+  <!-- Best Selling Mango Varieties with REAL images -->
+  <div class="best-selling" id="shop">
+    <div class="section-title">Best Selling Mango Varieties</div>
+    <div class="variety-grid">
+      <div class="variety-card" data-name="Himsagar" data-price="190">
+        <div class="variety-img"><img src="img/himsagor.jpg.webp" alt="Himsagar"></div>
+        <div class="variety-info"><h3>Himsagar</h3><p>King of aroma | Juicy & fiberless</p><strong>BDT 190/kg</strong><button class="add-to-cart">Add to Cart</button></div>
+      </div>
+      <div class="variety-card" data-name="Langra" data-price="170">
+        <div class="variety-img"><img src="img/lengra.jpg.webp" alt="Langra"></div>
+        <div class="variety-info"><h3>Langra</h3><p>Sweet tang | golden pulp</p><strong>BDT 170/kg</strong><button class="add-to-cart">Add to Cart</button></div>
+      </div>
+      <div class="variety-card" data-name="Amrapali" data-price="210">
+        <div class="variety-img"><img src="img/Amrapali.jpg.jpg" alt="Amrapali"></div>
+        <div class="variety-info"><h3>Amrapali</h3><p>Deep orange, rich flavour</p><strong>BDT 210/kg</strong><button class="add-to-cart">Add to Cart</button></div>
+      </div>
+      <div class="variety-card" data-name="Gopalbog" data-price="165">
+        <div class="variety-img"><img src="img/gopalbog.jpg.jpg" alt="Gopalbog"></div>
+        <div class="variety-info"><h3>Gopalbog</h3><p>Sweet tang | golden pulp</p><strong>BDT 165/kg</strong><button class="add-to-cart">Add to Cart</button></div>
+      </div>
+      <div class="variety-card" data-name="Khirsapath" data-price="175">
+        <div class="variety-img"><img src="img/khirsapath.jpg.webp" alt="Khirsapath"></div>
+        <div class="variety-info"><h3>Khirsapath</h3><p>Sweet tang | golden pulp</p><strong>BDT 175/kg</strong><button class="add-to-cart">Add to Cart</button></div>
+      </div>
+      <div class="variety-card" data-name="Lokhonbog" data-price="185">
+        <div class="variety-img"><img src="img/Lokkhonvog-Mango.jpg.jpg" alt="Lokhonbog"></div>
+        <div class="variety-info"><h3>Lokhonbog</h3><p>Sweet tang | golden pulp</p><strong>BDT 185/kg</strong><button class="add-to-cart">Add to Cart</button></div>
+      </div>
+      <div class="variety-card" data-name="Bombai" data-price="170">
+        <div class="variety-img"><img src="img/bombai.jpg.webp" alt="Bombai"></div>
+        <div class="variety-info"><h3>Bombai</h3><p>Sweet tang | golden pulp</p><strong>BDT 170/kg</strong><button class="add-to-cart">Add to Cart</button></div>
+      </div>
+      <div class="variety-card" data-name="Subornorekha" data-price="195">
+        <div class="variety-img"><img src="img/subornorekha.jpg.jpg" alt="Subornorekha"></div>
+        <div class="variety-info"><h3>Subornorekha</h3><p>Sweet tang | golden pulp</p><strong>BDT 195/kg</strong><button class="add-to-cart">Add to Cart</button></div>
+      </div>
+      
+      <div class="variety-card" data-name="Fazli" data-price="250">
+        <div class="variety-img"><img src="img/Fazli-Mango.jpg.jpg" alt="Fazli"></div>
+        <div class="variety-info"><h3>Fazli</h3><p>Giant size, unique taste</p><strong>BDT 250/kg</strong><button class="add-to-cart">Add to Cart</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistics -->
+  <div class="stats-counter">
+    <div><p>2,785+</p><span>Orchard Partners</span></div>
+    <div><p>13+</p><span>Years Excellence</span></div>
+    <div><p>8,356+</p><span>Happy Families</span></div>
+    <div><p>27%</p><span>More Sweetness</span></div>
+  </div>
+
+  <!-- Reviews -->
+  <div class="reviews" id="reviews">
+    <div class="section-title">Customer Reviews</div>
+    <div class="review-grid">
+      <div class="review-card"><div class="stars">★★★★★</div><p>"The most juicy mangoes! Authentic taste."</p><strong>— Tania Ahmed</strong></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Super fresh, chemical-free. Unforgettable aroma."</p><strong>— Rajib H.</strong></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Direct from Chapai Nawabganj — worth it!"</p><strong>— Sultana Parvin</strong></div>
+    </div>
+  </div>
+
+  <!-- Festival Banner -->
+  <div class="festival-banner">
+    <h2 style="font-size: 2rem; font-weight: 800;">🍑 Royal Mango Collection</h2>
+    <p style="margin: 16px 0;">Summer Mango Festival is live! Mangoes at your door in 3 days.</p>
+    <button class="btn-primary" id="festivalOrderBtn" style="background: #C0392B;">Order Premium Mangoes Today</button>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3 style="color:#E67E22;">MangoMart</h3><p>Fresh mangoes from Rajshahi & Chapai Nawabganj</p></div>
+      <div><h4>Contact</h4><p>hello@mangomart.com<br>+880 1234 567890</p></div>
+      <div class="social"><h4>Follow us</h4><i class="fab fa-facebook"></i> <i class="fab fa-instagram"></i></div>
+    </div>
+    <div class="copyright">© 2025 MangoMart — Premium Mangoes</div>
+  </div>
+</footer>
+
+<script>
+  // Cart System
+  let cart = [];
+  let isLoggedIn = false;
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 2500);
+  }
+
+  function updateCartUI() {
+    const cartItemsDiv = document.getElementById('cartItems');
+    const cartTotalSpan = document.getElementById('cartTotal');
+    const cartCountSpan = document.getElementById('cartCount');
+    let total = 0;
+    if (cart.length === 0) {
+      cartItemsDiv.innerHTML = '<p style="text-align:center; color:#9B7B5C;">Your cart is empty</p>';
+      cartTotalSpan.innerText = 'Total: BDT 0';
+      cartCountSpan.innerText = '0';
+      return;
+    }
+    let html = '';
+    cart.forEach((item, idx) => {
+      total += item.price;
+      html += `<div class="cart-item">
+        <div><strong>${item.name}</strong><br>BDT ${item.price}/kg</div>
+        <button style="background:#C0392B; color:white; border:none; padding:4px 12px; border-radius:20px; cursor:pointer;" onclick="removeFromCart(${idx})">Remove</button>
+      </div>`;
+    });
+    cartItemsDiv.innerHTML = html;
+    cartTotalSpan.innerText = `Total: BDT ${total}`;
+    cartCountSpan.innerText = cart.length;
+  }
+
+  window.removeFromCart = function(idx) {
+    cart.splice(idx, 1);
+    updateCartUI();
+    showToast("Item removed from cart");
+  };
+
+  function addToCart(name, price) {
+    if (!isLoggedIn) {
+      showToast("⚠️ Please login first to add items to cart!");
+      document.getElementById('loginModal').style.display = 'flex';
+      return;
+    }
+    cart.push({ name, price: parseInt(price) });
+    updateCartUI();
+    showToast(`✅ ${name} added to cart!`);
+  }
+
+  // Login System
+  const loginModal = document.getElementById('loginModal');
+  const openLoginBtn = document.getElementById('openLoginBtn');
+  const closeModal = document.getElementById('closeModal');
+  const doLoginBtn = document.getElementById('doLoginBtn');
+
+  openLoginBtn.onclick = () => loginModal.style.display = 'flex';
+  closeModal.onclick = () => loginModal.style.display = 'none';
+  window.onclick = (e) => { if (e.target === loginModal) loginModal.style.display = 'none'; };
+
+  doLoginBtn.onclick = () => {
+    const email = document.getElementById('loginEmail').value;
+    const pwd = document.getElementById('loginPassword').value;
+    if (email.trim() === "" && pwd.trim() === "") {
+      isLoggedIn = true;
+      showToast("🎉 Welcome Guest! You are now logged in.");
+    } else if (email.trim() !== "" && pwd.trim() !== "") {
+      isLoggedIn = true;
+      showToast(`🎉 Welcome ${email.split('@')[0]}! You are now logged in.`);
+    } else {
+      showToast("❌ Please enter email and password");
+      return;
+    }
+    loginModal.style.display = 'none';
+    document.getElementById('loginEmail').value = '';
+    document.getElementById('loginPassword').value = '';
+    openLoginBtn.innerText = "👤 Logged In";
+    openLoginBtn.style.background = "#E67E22";
+    openLoginBtn.style.color = "white";
+  };
+
+  // Cart Sidebar
+  const cartSidebar = document.getElementById('cartSidebar');
+  const openCartBtn = document.getElementById('openCartBtn');
+  const closeCart = document.getElementById('closeCart');
+
+  openCartBtn.onclick = () => {
+    if (!isLoggedIn) {
+      showToast("⚠️ Please login first to view your order!");
+      loginModal.style.display = 'flex';
+      return;
+    }
+    cartSidebar.classList.add('open');
+  };
+  closeCart.onclick = () => cartSidebar.classList.remove('open');
+
+  document.getElementById('checkoutBtn').onclick = () => {
+    if (cart.length === 0) {
+      showToast("🛒 Your cart is empty! Add some mangoes first.");
+      return;
+    }
+    showToast("🎉 Order placed successfully! Our team will contact you within 24 hours.");
+    cart = [];
+    updateCartUI();
+    cartSidebar.classList.remove('open');
+  };
+
+  // Add to cart buttons
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = btn.closest('.variety-card');
+      const name = card.querySelector('h3').innerText;
+      const priceText = card.querySelector('strong').innerText;
+      const price = parseInt(priceText.replace('BDT', '').replace('/kg', ''));
+      addToCart(name, price);
+    });
+  });
+
+  // Scroll and other buttons
+  document.getElementById('shopNowScrollBtn').onclick = () => document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('watchFarmBtn').onclick = () => showToast("🎥 Watch the journey: From orchards to your doorstep.");
+  document.getElementById('festivalOrderBtn').onclick = () => {
+    if (!isLoggedIn) { showToast("Please login first to order!"); loginModal.style.display = 'flex'; }
+    else showToast("✨ Royal Mango Festival package added! We'll contact you.");
+  };
+
+  // Nav links scroll
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
